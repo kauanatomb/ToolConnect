@@ -7,7 +7,7 @@ class CreateBookings < ActiveRecord::Migration[7.0]
       t.string :review
       t.date :rental_start
       t.date :rental_end
-
+# comment
       t.timestamps
     end
   end
