@@ -3,8 +3,12 @@ class ToolsController < ApplicationController
 
   def index
     @tools = Tool.all
-  end
 
+    if params[:search].present?
+      @tools = @tools.where("name ILIKE ?", "%#{params[:search]}%")
+    end
+  end
+  
   def show
     @tool = Tool.find(params[:id])
   end
