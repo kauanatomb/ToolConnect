@@ -12,10 +12,14 @@
   </head>
 
   <body>
+    <div class="navbar-container">
+      <%= render "shared/navbar" unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+     </div>
+     <br>
     <%= yield %>
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
-     <%= render "shared/navbar" %>
-     <%= render "shared/flashes" %>
+     
+     <%= render "shared/flashes"%>
   </body>
 </html>

@@ -1,0 +1,14 @@
+<h1>Tools</h1>
+
+<ul>
+  <% @tools.each do |tool| %>
+    <li>
+      <h2><%= tool.name %></h2>
+      <p><%= tool.description %></p>
+      <p><strong>Availability:</strong> <%= tool.availability ? 'Available' : 'Not available' %></p>
+      <%= link_to 'View Tool', tool %>
+    </li>
+  <% end %>
+</ul>
+
+<p>Welcome to the Tools page!</p>
