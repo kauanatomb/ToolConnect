@@ -17,8 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_151306) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "tool_id", null: false
-    t.string "information"
-    t.string "review"
+    t.string "status"
     t.date "rental_start"
     t.date "rental_end"
     t.datetime "created_at", null: false
