@@ -1,6 +1,20 @@
-patrick = User.create first_name: "Patrick", last_name: "Bird", email: "pb@gmail.com", password: "password"
-
+require 'faker'
 require 'csv'
+
+Tool.destroy_all
+User.destroy_all
+
+puts 'Creating 10 fake users...'
+10.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+  )
+  user.save!
+end
+puts 'Finished!'
 
 CSV.foreach(Rails.root.join('db/tools.csv'), headers: true) do |row|
   Tool.create!({
@@ -8,6 +22,6 @@ CSV.foreach(Rails.root.join('db/tools.csv'), headers: true) do |row|
     address: row[1],
     description: row[2],
     availability: row[3],
-    user_id: patrick.id
+    user: User.all.sample
   })
 end
