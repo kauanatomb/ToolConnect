@@ -4,6 +4,5 @@
 <p><strong>Availability:</strong> <%= @tool.availability ? 'Available' : 'Not available' %></p>
 
 <%= link_to 'Edit', edit_tool_path(@tool) %> |
-<%= link_to 'Delete', tool_path(@tool), method: :delete, data: { confirm: 'Are you sure you want to delete this tool?' } %> |
-<%= render ‘booking/form’, booking: @booking %>
+<%= link_to 'Delete', tool_path(@tool), method: :delete, data: { confirm: 'Are you sure you want to delete this tool?' } %> 
 <%= link_to 'Back to Tools', tools_path %>
