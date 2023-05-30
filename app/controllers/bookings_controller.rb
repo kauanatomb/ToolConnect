@@ -1,4 +1,4 @@
-class BookingController < ApplicationController
+class BookingsController < ApplicationController
   def index
     @bookings = Booking.all
   end
@@ -9,6 +9,7 @@ class BookingController < ApplicationController
 
   def new
     @booking = Booking.new
+    @tool = Tool.find(params[:tool_id])
   end
 
   def create
