@@ -7,8 +7,12 @@
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <%# <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Find tools</button>
         <button type="button" class="btn btn-outline-secondary btn-lg px-4">Log in</button> %>
-        <button class="button-55" role="button">Find tools</button>
-        <button class="button-55" role="button">Log In</button>
+        <% if user_signed_in? %>
+          <%= link_to "Find tools", tools_path, class:"button-55" %>
+        <% else %>
+          <%= link_to "Find tools", tools_path, class:"button-55" %>
+          <%= link_to "Log in", new_user_session_path, class:"button-55" %>
+        <% end %>
       </div>
       <br>
       <br>
