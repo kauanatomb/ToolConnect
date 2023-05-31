@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:edit, :update, :index, :destroy]
+
+  get 'accept_booking', to: 'bookings#accept'
 end
