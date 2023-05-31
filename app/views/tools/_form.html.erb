@@ -16,4 +16,7 @@
     <%= form.text_field :name %>
   </div>
 <% end %>
-exit
+
+  <%= simple_form_for(tool) do |f| %>
+    <%= f.input :image, as: :file %>
+  <% end %>
