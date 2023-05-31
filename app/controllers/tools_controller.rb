@@ -18,7 +18,8 @@ class ToolsController < ApplicationController
   end
 
   def create
-    @tool = current_user.tools.build(tool_params)
+    @tool = Tool.new(tool_params)
+    @tool.user = current_user
     if @tool.save
       redirect_to @tool, notice: 'Tool was successfully created.'
     else

@@ -1,13 +1,25 @@
-<%= simple_form_for([tool, booking]) do |f| %>
-<%= f.error_notification %>
-<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= simple_form_for([tool, booking], html: { class: 'form' }) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<div class='form-inputs'>
-<%= f.input :rental_start, as: :string, input_html: { data: {controller: 'datepicker' } }%>
-<%= f.input :rental_end, as: :string, input_html: { data: {controller: 'datepicker' } }%>
+        <div class="form-group">
+          <%= f.input :rental_start, label: 'Rental Start Date', as: :string, input_html: { data: { controller: 'datepicker' }, class: 'form-control' } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :rental_end, label: 'Rental End Date', as: :string, input_html: { data: { controller: 'datepicker' }, class: 'form-control' } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="form-actions">
-<%= f.button :submit %>
-</div>
-<% end %>
+
+
