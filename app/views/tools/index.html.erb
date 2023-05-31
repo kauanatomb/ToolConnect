@@ -1,14 +1,31 @@
-<h1>Tools</h1>
+<div class="container mx-auto">
+  <h1 class="text-center">Tools</h1>
 
-<ul>
-  <% @tools.each do |tool| %>
-    <li>
-      <h2><%= tool.name %></h2>
-      <p><%= tool.description %></p>
-      <p><strong>Availability:</strong> <%= tool.availability ? 'Available' : 'Not available' %></p>
-      <%= link_to 'View Tool', tool %>
-    </li>
-  <% end %>
-</ul>
+  <!-- Formulário de busca -->
+  <form action="/tools" method="GET" class="mb-4">
+    <div class="input-group">
+      <input type="text" name="search" class="form-control" placeholder="Search for a tool">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
 
-<p>Welcome to the Tools page!</p>
+<div class="container mx-auto">
+  <div class="row justify-content-center">
+    <% @tools.each do |tool| %>
+      <div class="col-10 col-md-4 col-lg-3 mb-4">
+        <div class="card rounded shadow">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= tool.name %></strong></h5>
+            <p class="card-text"><%= tool.description %></p>
+            <p class="card-text"><strong>Availability:</strong> <%= tool.availability ? 'Available' : 'Not available' %></p>
+            <%= link_to 'View Tool', tool, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

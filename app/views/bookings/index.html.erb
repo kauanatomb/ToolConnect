@@ -1,0 +1,22 @@
+<div class="container">
+  <%= link_to "Create a new Booking", tools_path, class: "btn btn-primary mb-4" %>
+<h1>My bookings</h1>
+<br>
+  <div class="row justify-content-center">
+    <% @bookings.each do |booking| %>
+      <div class="col-10 col-md-4 col-lg-3 mb-4">
+        <div class="card rounded shadow">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= booking.rental_start %></h5>
+            <h5 class="card-title"><%= booking.rental_end %></h5>
+            <p class="card-text"><%= booking.status %></p>
+            <select name="item_status" id="item_status">
+  
+            <%= link_to "Delete",booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
