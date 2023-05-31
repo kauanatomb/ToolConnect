@@ -8,6 +8,7 @@
             <p class="card-title"><strong><%= booking.rental_start %></strong></p>
             <p class="card-title"><strong><%= booking.rental_end %></strong></p>
             <p class="card-text"><%= booking.status %></p>
+            <%= link_to "Delete",booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
           </div>
         </div>
       </div>
