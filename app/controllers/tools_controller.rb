@@ -8,7 +8,7 @@ class ToolsController < ApplicationController
       @tools = @tools.where("name ILIKE ?", "%#{params[:search]}%")
     end
   end
-  
+
   def show
     @tool = Tool.find(params[:id])
   end
