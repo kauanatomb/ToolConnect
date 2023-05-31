@@ -2,5 +2,12 @@
 
 <%= render 'form' %>
 
+<div>
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+</div>
+
+<%= form.submit 'Update Tool' %>
+
 <%= link_to 'Back to Tool', @tool %> |
 <%= link_to 'Back to Tools', tools_path %>
