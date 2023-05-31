@@ -1,19 +1,62 @@
-<%= form_with(model: @tool, local: true) do |form| %>
-  <% if @tool.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
+<div class="container">
+  <%= form_with(model: @tool, local: true, class: 'form') do |form| %>
+    <% if @tool.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
 
-      <ul>
-        <% @tool.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @tool.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :description %>
+          <%= form.text_field :description, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :address %>
+          <%= form.text_field :address, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :availability %>
+          <%= form.text_field :availability, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+<br>
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-between">
+        <div class="form-actions">
+          <%= form.submit 'Save', class: 'btn btn-primary' %>
+        </div>
+        <div class="form-actions">
+          <%= link_to 'Cancel', tools_path, class: 'btn btn-danger' %>
+        </div>
+      </div>
     </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-<% end %>
-exit
+
+
+
