@@ -11,6 +11,8 @@
             <h5 class="card-title"><%= booking.rental_start %></h5>
             <h5 class="card-title"><%= booking.rental_end %></h5>
             <p class="card-text"><%= booking.status %></p>
+            <select name="item_status" id="item_status">
+  
             <%= link_to "Delete",booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
           </div>
         </div>
@@ -18,5 +20,3 @@
     <% end %>
   </div>
 </div>
-
-
