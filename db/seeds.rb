@@ -26,7 +26,7 @@ CSV.foreach(Rails.root.join('db/tools.csv'), headers: true) do |row|
     user: User.all.sample
   })
   # tool.image.attach( io: File.open("url.png"), filename: "tools.png", content_type: "image/png")
-  random_image = URI.open(Faker::LoremFlickr.image(size: "300x200", search_terms: ['tools', 'hammer']))
-  tool.image.attach( io: random_image, filename: "#{tool.name}.png", content_type: "image/png")
+  random_image = URI.open(Faker::LoremFlickr.image(size: "300x200", search_terms: ['tools', 'hammer', 'Mallet']))
+  tool.photo.attach( io: random_image, filename: "#{tool.name}.png", content_type: "image/png")
   tool.save
 end
