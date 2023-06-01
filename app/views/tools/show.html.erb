@@ -20,30 +20,10 @@
 
       <div id="map" style="height: 300px;"></div>
 
-      <script>
-        function initMap() {
-          var geocoder = new google.maps.Geocoder();
-          var address = "<%= @tool.address %>";
-          var mapOptions = {
-            zoom: 15,
-            center: { lat: 0, lng: 0 }
-          };
-          var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-          geocoder.geocode({ 'address': address }, function(results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-              map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-              });
-            } else {
-              console.log('Geocode was not successful for the following reason: ' + status);
-            }
-          });
-        }
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+      <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 
     <div class="btn-toolbar mt-4">
