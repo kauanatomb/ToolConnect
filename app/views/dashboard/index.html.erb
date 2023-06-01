@@ -12,9 +12,10 @@
         <% @bookings.each do |booking| %>
           <div class="card mb-3 col-md-4">
             <div class="card-body">
+              <% tool = Tool.find_by(id: booking.tool_id) %>
+              <h5 class="card-title"><%= tool.name %></h5>
               <h5 class="card-title">Rental Start: <%= booking.rental_start %></h5>
               <h5 class="card-title">Rental End: <%= booking.rental_end %></h5>
-              <p class="card-text">Status: <%= booking.status %></p>
             </div>
           </div>
         <% end %>
@@ -28,15 +29,18 @@
     <div class="card-header">
       <h2>My Tools:</h2>
     </div>
-    <div class="card-body">
-      <div class="row">
-        <% @tools.each do |tool| %>
-          <div class="card mb-3 col-md-4">
-            <% if tool.photo.attached? %>
-              <%= cl_image_tag(tool.photo.key, class: "card-img-top") %>
+   <div class="container mx-auto">
+    <div class="row justify-content-center">
+      <% @tools.each do |tool| %>
+        <div class="col-10 col-md-4 col-lg-3 mb-4">
+          <br>
+          <div class="card rounded shadow">
+            <% if tool.photo.present? %>
+              <%= cl_image_tag tool.photo.key, class: 'card-img-top' %>
             <% else %>
               <p>No Image Available</p>
             <% end %>
+            <hr class="mt-0">
             <div class="card-body">
               <h5 class="card-title"><%= tool.name %></h5>
               <h5 class="card-title"><%= tool.description %></h5>
@@ -60,6 +64,9 @@
         </div>
       </div>
       <div class="booking-actions">
+      <%= link_to 'View Tool', tool, class: "btn btn-primary btn-sm mr-2" %>
+              <%= link_to "Edit", edit_tool_path(tool), class: "btn btn-success btn-sm mr-2" %>
+              <%= button_to "Delete", tool_path(tool), method: :delete, data: { confirm: "Are you sure you want to delete this tool?" }, class: "btn btn-danger btn-sm mt-2" %>
         <% if booking.pending? %>
           <%= simple_form_for booking do |f| %>
             <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
@@ -77,8 +84,10 @@
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
+  </div>
+
   </div>
 </div>
