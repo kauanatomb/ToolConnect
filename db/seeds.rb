@@ -27,3 +27,19 @@ CSV.foreach(Rails.root.join('db/tools.csv'), headers: true) do |row|
   tool.image.attach( io: File.open("app/assets/images/toolbox.png"), filename: "tools.png", content_type: "image/png")
   tool.save
 end
+
+####
+# images = Dir.glob("app/assets/images/*.png")
+
+# CSV.foreach(Rails.root.join('db/tools.csv'), headers: true) do |row|
+#   tool = Tool.new({
+#     name: row[0],
+#     address: row[1],
+#     description: row[2],
+#     availability: row[3],
+#     user: User.all.sample
+#   })
+#   image = images.sample
+#   tool.image.attach(io: File.open(image), filename: File.basename(image), content_type: "image/png")
+#   tool.save
+# end
