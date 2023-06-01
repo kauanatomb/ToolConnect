@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Welcome to Your Dashboard, <%= current_user.first_name %>!</h1>
+  <div class="card mt-4">
+    <div class="card-header">
+      <h2>Bookings:</h2>
+    </div>
+    <div class="card-body">
+      <% @bookings.each do |booking| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><%= booking.rental_start %></h5>
+            <h5 class="card-title"><%= booking.rental_end %></h5>
+            <p class="card-text"><%= booking.status %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
