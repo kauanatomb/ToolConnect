@@ -14,7 +14,7 @@
 
   <body class=<%="body-bg" if current_page?(root_path)%>>
 
-    <div class="page-container">
+    <div>
 
       <div class="navbar-container"><%= render "shared/navbar"  unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
       </div>
@@ -24,8 +24,10 @@
         <%= render "shared/flashes"%>
       </div>
 
-      <div class="footer-container"><%= render "shared/footer" %>
+      <div class="footer">
+        <%= render "shared/footer" %>
       </div>
+
 
     </div>
 
