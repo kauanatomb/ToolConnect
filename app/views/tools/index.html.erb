@@ -16,19 +16,20 @@
   <div class="row justify-content-center">
     <% @tools.each do |tool| %>
       <div class="col-10 col-md-4 col-lg-3 mb-4">
-        <div class="card rounded shadow">
-          <% if tool.photo.attached? %>
-            <%= cl_image_tag tool.photo.key, class: 'card-img-top' %>
-          <% else %>
-            <p>No Image Available</p>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><strong><%= tool.name %></strong></h5>
-            <p class="card-text"><%= tool.description %></p>
-            <p class="card-text"><strong>Availability:</strong> <%= tool.availability ? 'Available' : 'Not available' %></p>
-            <%= link_to 'View Tool', tool, class: "btn btn-primary" %>
+        <%= link_to tool, class: "card-link" do %>
+          <div class="card rounded shadow">
+            <% if tool.photo.attached? %>
+              <%= cl_image_tag tool.photo.key, class: 'card-img-top' %>
+            <% else %>
+              <p>No Image Available</p>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><strong><%= tool.name %></strong></h5>
+              <p class="card-text"><%= tool.description %></p>
+              <p class="card-text"><strong>Availability:</strong> <%= tool.availability ? 'Available' : 'Not available' %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
