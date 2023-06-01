@@ -41,7 +41,7 @@ class ToolsController < ApplicationController
   def update
     @tool = Tool.find(params[:id])
     if @tool.update(tool_params)
-      redirect_to @tool, notice: 'Tool was successfully updated.'
+      redirect_to user_dashboard_path, notice: 'Tool was successfully updated.'
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class ToolsController < ApplicationController
   def destroy
     @tool = Tool.find(params[:id])
     @tool.destroy
-    redirect_to tools_path, notice: 'Tool was successfully deleted.'
+    redirect_to user_dashboard_path, notice: 'Tool was successfully deleted.'
   end
 
   private
