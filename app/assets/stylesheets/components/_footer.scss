@@ -1,6 +1,4 @@
-.page-container {
-  display: grid;
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
-  margin-top: 30px;
+.footer {
+  position: bottom;
+  left: 0 ; right: 0; bottom: 0;
 }
