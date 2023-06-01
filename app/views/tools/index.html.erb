@@ -17,7 +17,7 @@
     <% @tools.each do |tool| %>
       <div class="col-10 col-md-4 col-lg-3 mb-4">
         <div class="card rounded shadow">
-          <% if tool.photo.present? %>
+          <% if tool.photo.attached? %>
             <%= cl_image_tag tool.photo.key, class: 'card-img-top' %>
           <% else %>
             <p>No Image Available</p>
