@@ -17,7 +17,6 @@
     <% @tools.each do |tool| %>
       <div class="col-10 col-md-4 col-lg-3 mb-4">
         <div class="card rounded shadow">
-          <%# <img class="card-img-top" src="https://images.unsplash.com/photo-1606676539940-12768ce0e762?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Card image cap"> %>
           <%= cl_image_tag tool.photo.key, class: 'card-img-top'%>
           <div class="card-body">
             <h5 class="card-title"><strong><%= tool.name %></strong></h5>
