@@ -4,6 +4,13 @@ class ToolsController < ApplicationController
   def index
     @tools = Tool.all
 
+    @markers = @tools.geocoded.map do |tool|
+      {
+        lat: tool.latitude,
+        lng: tool.longitude
+      }
+    end
+
     if params[:search].present?
       @tools = @tools.where("name ILIKE ?", "%#{params[:search]}%")
     end
@@ -49,6 +56,6 @@ class ToolsController < ApplicationController
   private
 
   def tool_params
-    params.require(:tool).permit(:name, :description, :image, :address, :availability)
+    params.require(:tool).permit(:name, :description, :photo, :address, :availability)
   end
 end

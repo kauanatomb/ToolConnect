@@ -1,11 +1,14 @@
 // Specific CSS for your home-page
 
 body {
-    background-image: url("tool_connect_header");
-    background-size: cover;
-    background-position: top;
     font-family: Neucha, sans-serif;
   }
+
+.body-bg {
+  background-image: url("tool_connect_header");
+  background-size: cover;
+  background-position: top;
+}
 
 .display-5 {
   font-family: Neucha, sans-serif;

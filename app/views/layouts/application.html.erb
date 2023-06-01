@@ -8,16 +8,26 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <div class="navbar-container">
-      <%= render "shared/navbar" unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
-     </div>
-     <br>
-    <%= yield %>
-     
-     <%= render "shared/flashes"%>
+  <body class=<%="body-bg" if current_page?(root_path)%>>
+
+    <div class="page-container">
+
+      <div class="navbar-container"><%= render "shared/navbar"  unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+      </div>
+
+      <div class="content-container">
+        <%= yield %>
+        <%= render "shared/flashes"%>
+      </div>
+
+      <div class="footer-container"><%= render "shared/footer" %>
+      </div>
+
+    </div>
+
   </body>
 </html>
