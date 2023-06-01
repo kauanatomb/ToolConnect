@@ -4,8 +4,8 @@ require 'csv'
 Tool.destroy_all
 User.destroy_all
 
-puts 'Creating 10 fake users...'
-10.times do
+puts 'Creating 5 fake users...'
+5.times do
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
