@@ -1,2 +1,10 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.card-title:link {
+  text-decoration: none;
+}
+
+.card-text:link {
+  text-decoration: none;
+}
