@@ -16,8 +16,10 @@
 
     <div>
 
-      <div class="navbar-container"><%= render "shared/navbar"  unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+      <div class="navbar-container" style="height: 60px;">
+        <%= render "shared/navbar" unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
       </div>
+
 
       <div class="content-container">
         <%= yield %>

@@ -1,3 +1,4 @@
+<br><br>
 <div class="container">
   <h1>Welcome to Your Dashboard, <%= current_user.first_name %>!</h1>
   
@@ -16,6 +17,7 @@
               <h5 class="card-title"><%= tool.name %></h5>
               <h5 class="card-title">Rental Start: <%= booking.rental_start %></h5>
               <h5 class="card-title">Rental End: <%= booking.rental_end %></h5>
+              <h5 class="card-title">Status: <%= booking.status %></h5>
             </div>
           </div>
         <% end %>
