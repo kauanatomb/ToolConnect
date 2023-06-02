@@ -15,7 +15,10 @@ puts 'Creating 5 fake users...'
   )
   user.save!
 end
-puts 'Finished!'
+User.create(first_name: "João",
+  last_name: "Silva",
+  email: "email@email.com",
+  password: "123456",)
 
 CSV.foreach(Rails.root.join('db/tools.csv'), headers: true) do |row|
   tool = Tool.new({
