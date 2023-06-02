@@ -1,10 +1,10 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:show, :accept, :edit, :update, :destroy]
   def index
     @bookings = Booking.where(user: current_user)
   end
 
   def show
-    @booking = Booking.find(params[:id])
   end
 
   def new
@@ -22,29 +22,29 @@ class BookingsController < ApplicationController
   end
 
   def accept
-    @booking = Booking.find(params[:id])
     @booking.status = 'accepted'
     @booking.save
     redirect_to bookings_path
   end
 
   def edit
-    @booking = Booking.find(params[:id])
   end
 
   def update
-    @booking = Booking.find(params[:id])
     @booking.update(booking_params)
     redirect_to booking_path(@booking)
   end
 
   def destroy
-    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to bookings_path, notice: 'Booking was successfully deleted.'
   end
 
   private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 
   def booking_params
     params.require(:booking).permit(:status, :rental_start, :rental_end)

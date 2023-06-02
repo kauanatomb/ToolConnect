@@ -1,22 +1,35 @@
-<div class="container">
-  <%= link_to "Create a new Booking", tools_path, class: "btn btn-primary mb-4" %>
-<h1>My bookings</h1>
-<br>
-  <div class="row justify-content-center">
-    <% @bookings.each do |booking| %>
-      <div class="col-10 col-md-4 col-lg-3 mb-4">
-        <div class="card rounded shadow">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"><%= booking.rental_start %></h5>
-            <h5 class="card-title"><%= booking.rental_end %></h5>
-            <p class="card-text"><%= booking.status %></p>
-            <select name="item_status" id="item_status">
-  
-            <%= link_to "Delete",booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<br><br>
+<div class="card mt-4">
+    <div class="card-header">
+      <h2>Bookings:</h2>
+    </div>
+    <div class="card-body">
+      <% if @bookings.empty? %>
+        <p>No bookings found.</p>
+      <% else %>
+        <% @bookings.each do |booking| %>
+          <div class="card mb-3 col-md-4">
+            <div class="card-body">
+              <% tool = Tool.find_by(id: booking.tool_id) %>
+              <h5 class="card-title"><%= tool.name %></h5>
+              <h5 class="card-title">Rental Start: <%= booking.rental_start %></h5>
+              <h5 class="card-title">Rental End: <%= booking.rental_end %></h5>
+              <h5 class="card-title">Status: <%= booking.status %></h5>
+              <% if tool.user_id == current_user %>
+                        <%= simple_form_for booking do |f| %>
+                          <%= f.input :status, as: :hidden, input_html: { value: 'accepted'} %>
+                          <%= f.submit 'Accept', class: 'btn btn-info' %>
+                        <% end %>
+                        <%= simple_form_for booking do |f| %>
+                          <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                          <%= f.submit 'Reject', class: 'btn btn-light' %>
+                        <% end %>
+                      <% else %>
+                        <p class='booking-tag'><%= booking.status %></p>
+                      <% end %>
+            </div>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
